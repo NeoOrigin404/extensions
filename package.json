@@ -1,5 +1,5 @@
 {
-  "name": "template_fullstack",
+  "name": "extensions",
   "version": "0.0.1",
   "description": "",
   "workspaces": ["client", "server"],
