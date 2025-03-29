@@ -2,7 +2,7 @@ CREATE TABLE member (
   id INTEGER UNSIGNED PRIMARY KEY AUTO_INCREMENT NOT NULL,
   first_name VARCHAR(50) NOT NULL,
   last_name VARCHAR(50) NOT NULL,
-  username VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL UNIQUE,
   email varchar(255) NOT NULL UNIQUE,
   hashed_password varchar(255) NOT NULL,
   premium BOOLEAN DEFAULT FALSE,
