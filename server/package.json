@@ -1,5 +1,5 @@
 {
-  "name": "@template_fullstack/server",
+  "name": "extensions",
   "main": "dist/src/main.js",
   "scripts": {
     "check-types": "tsc --noEmit",
@@ -7,8 +7,7 @@
     "db:migrate": "tsx ./bin/migrate",
     "db:seed": "tsx ./bin/seed",
     "build": "tsx ./bin/migrate && tsc ./src/main --outDir ../dist --esModuleInterop",
-    "start": "node ../dist/src/main",
-    "test": "mocha --require ts-node/register \"tests/**/*.spec.ts\""
+    "start": "node ../dist/src/main"
   },
   "dependencies": {
     "argon2": "^0.41.1",
@@ -22,8 +21,6 @@
   "devDependencies": {
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
-    "@types/mocha": "^10.0.10",
-    "mocha": "^11.1.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
