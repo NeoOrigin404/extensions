@@ -60,8 +60,6 @@ const add: RequestHandler = async (req, res, next) => {
       username: req.body.username,
       email: req.body.email,
       hashed_password: req.body.hashed_password,
-      premium: req.body.premium,
-      role: req.body.role,
     };
     const insertId = await memberRepository.create(member);
     res.status(201).json({ insertId });
