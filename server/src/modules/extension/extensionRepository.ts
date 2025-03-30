@@ -6,21 +6,15 @@ type Extension = {
   logo: string;
   name: string;
   description: string;
-  is_premium: boolean;
-  is_active: boolean;
+  is_premium?: boolean;
+  is_active?: boolean;
 };
 
 class ExtensionRepository {
   async create(extension: Omit<Extension, "id">): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "INSERT INTO extension (logo, name, description, is_premium, is_active) VALUES (?, ?, ?, ?, ?)",
-      [
-        extension.logo,
-        extension.name,
-        extension.description,
-        extension.is_premium,
-        extension.is_active,
-      ],
+      "INSERT INTO extension (logo, name, description) VALUES (?, ?, ?)",
+      [extension.logo, extension.name, extension.description],
     );
 
     return result.insertId;
@@ -49,6 +43,7 @@ class ExtensionRepository {
         extension.description,
         extension.is_premium,
         extension.is_active,
+        extension.id,
       ],
     );
     return result.affectedRows;
