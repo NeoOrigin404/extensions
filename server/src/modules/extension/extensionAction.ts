@@ -56,8 +56,6 @@ const add: RequestHandler = async (req, res, next) => {
       logo: req.body.logo,
       name: req.body.name,
       description: req.body.description,
-      is_premium: req.body.is_premium,
-      is_active: req.body.is_active,
     };
     const insertId = await extensionRepository.create(extension);
     res.status(201).json({ insertId });

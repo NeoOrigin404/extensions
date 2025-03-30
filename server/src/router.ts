@@ -36,7 +36,7 @@ router.put("/api/extension", extensionAction.edit);
 // Add a new extension
 router.post("/api/extensions", extensionAction.add);
 
-// Delete a extension
+// Delete a extension = api/extension?id= ?
 router.delete("/api/extension", extensionAction.destroy);
 /* ************************************************************************* */
 
