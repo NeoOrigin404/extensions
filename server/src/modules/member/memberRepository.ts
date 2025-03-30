@@ -3,7 +3,7 @@ import type { Result, Rows } from "../../../database/client";
 
 type Member = {
   id: number;
-  frist_name?: string;
+  first_name?: string;
   last_name?: string;
   username?: string;
   email?: string;
@@ -17,7 +17,7 @@ class MemberRepository {
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO member (first_name, last_name, username, email, hashed_password) VALUES (?, ?, ?, ?, ?)",
       [
-        member.frist_name,
+        member.first_name,
         member.last_name,
         member.username,
         member.email,
@@ -47,15 +47,16 @@ class MemberRepository {
 
   async update(member: Member) {
     const [result] = await databaseClient.query<Result>(
-      "UPDATE member SET first_name = ?, last_,name = ?, username = ?, email = ?, hashed_password = ?, premium = ?, role = ?",
+      "UPDATE member SET first_name = ?, last_name = ?, username = ?, email = ?, hashed_password = ?, premium = ?, role = ? WHERE id = ?",
       [
-        member.frist_name,
+        member.first_name,
         member.last_name,
         member.username,
         member.email,
         member.hashed_password,
         member.premium,
         member.role,
+        member.id,
       ],
     );
 
