@@ -5,9 +5,11 @@ declare global {
   namespace Express {
     export interface Request {
       /* ************************************************************************* */
-      // Add your custom properties here, for example:
-      //
-      // user?: { ... }
+      member: {
+        id: number;
+        email: string;
+        role: string;
+      };
       /* ************************************************************************* */
     }
   }

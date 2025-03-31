@@ -13,6 +13,7 @@ type Member = {
 };
 
 class MemberRepository {
+  // Classic CRUD
   async create(member: Omit<Member, "id">) {
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO member (first_name, last_name, username, email, hashed_password) VALUES (?, ?, ?, ?, ?)",
@@ -30,7 +31,12 @@ class MemberRepository {
 
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT first_name, last_name, username, email, premium, role FROM member WHERE id = ?",
+      `SELECT first_name, last_name, username, email, premium, role, 
+      GROUP_CONCAT (language.name) AS languages
+       FROM member
+       LEFT JOIN member_language ON member.id = member_language.member_id
+       LEFT JOIN language ON language.id = member_language.language_id
+       WHERE member.id = ?`,
       [id],
     );
 
@@ -39,7 +45,13 @@ class MemberRepository {
 
   async readAll() {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT *, first_name, last_name, username FROM member",
+      `SELECT first_name, last_name, username, email, premium, role, 
+      GROUP_CONCAT (language.name) AS languages
+       FROM member
+       LEFT JOIN member_language ON member.id = member_language.member_id
+       LEFT JOIN language ON language.id = member_language.language_id
+       WHERE member.id = ?
+       GROUP BY member.id`,
     );
 
     return rows as Member[];
@@ -70,6 +82,15 @@ class MemberRepository {
     );
 
     return result.affectedRows;
+  }
+
+  // Read email for login
+  async readByEmailWithPassword(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM member WHERE email = ?",
+      [email],
+    );
+    return rows[0];
   }
 }
 
