@@ -3,3 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --font-family: "Noto Sans", Verdana, sans-serif;
+  --card-radius: 5px;
+  --button-radius: 10px;
+}
+
+body {
+  a {
+    text-decoration: none;
+  }
+  ul,
+  ol {
+    list-style: none;
+  }
+}
