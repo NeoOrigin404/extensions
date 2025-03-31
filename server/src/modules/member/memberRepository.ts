@@ -31,7 +31,12 @@ class MemberRepository {
 
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT first_name, last_name, username, email, premium, role FROM member WHERE id = ?",
+      `SELECT first_name, last_name, username, email, premium, role, 
+      GROUP_CONCAT (language.name) AS languages
+       FROM member
+       LEFT JOIN member_language ON member.id = member_language.member_id
+       LEFT JOIN language ON language.id = member_language.language_id
+       WHERE member.id = ?`,
       [id],
     );
 
@@ -40,7 +45,13 @@ class MemberRepository {
 
   async readAll() {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT *, first_name, last_name, username FROM member",
+      `SELECT first_name, last_name, username, email, premium, role, 
+      GROUP_CONCAT (language.name) AS languages
+       FROM member
+       LEFT JOIN member_language ON member.id = member_language.member_id
+       LEFT JOIN language ON language.id = member_language.language_id
+       WHERE member.id = ?
+       GROUP BY member.id`,
     );
 
     return rows as Member[];
