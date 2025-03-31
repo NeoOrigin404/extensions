@@ -20,7 +20,7 @@ CREATE TABLE extension (
 
 INSERT INTO member (first_name, last_name, username, email, hashed_password, premium, role)
 VALUES
-("Julien", "Picart", "NeoOrigin404", "admin@extensions.com", "Admin", TRUE, "admin");
+("Julien", "Picart", "NeoOrigin404", "admin@extensions.com", "$argon2id$v=19$m=32768,t=10,p=4$jmU9Y1voPSzx95B2JUNQ0A$j77ZlRuGDdDQVSY+I78lb+4w8WM8AqkSpbWOyK1LCNQ", TRUE, "admin");
 
 INSERT INTO extension (logo, name, description, is_premium, is_active)
 VALUES
