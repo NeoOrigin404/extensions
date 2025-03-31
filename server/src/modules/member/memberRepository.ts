@@ -13,6 +13,7 @@ type Member = {
 };
 
 class MemberRepository {
+  // Classic CRUD
   async create(member: Omit<Member, "id">) {
     const [result] = await databaseClient.query<Result>(
       "INSERT INTO member (first_name, last_name, username, email, hashed_password) VALUES (?, ?, ?, ?, ?)",
@@ -70,6 +71,15 @@ class MemberRepository {
     );
 
     return result.affectedRows;
+  }
+
+  // Read email for login
+  async readByEmailWithPassword(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM member WHERE email = ?",
+      [email],
+    );
+    return rows[0];
   }
 }
 
