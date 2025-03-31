@@ -4,7 +4,6 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1>NeoOrigin404 - Monorepo</h1>
       <Outlet />
     </>
   );
