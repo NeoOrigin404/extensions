@@ -13,4 +13,14 @@ const loginMember = async (loginData: LoginData) => {
   }
 };
 
-export { loginMember };
+const signupMember = async (signupData: SignupData): Promise<boolean> => {
+  try {
+    const response = await axios.post(`${URL}/api/members`, signupData);
+    return response.status === 201;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
+export { loginMember, signupMember };

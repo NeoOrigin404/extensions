@@ -1,8 +1,8 @@
 import { Bounce, toast } from "react-toastify";
 
-export function useLoginToast() {
-  const notifySuccessLogin = (username: string) =>
-    toast.success(`Welcome ${username} 🚀`, {
+export function useSignupToast() {
+  const notifySuccessSignup = () =>
+    toast.success("Your profile has been created 🚀", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
@@ -14,8 +14,8 @@ export function useLoginToast() {
       transition: Bounce,
     });
 
-  const notifyErrorLogin = (
-    errorMessage = "Login error : incorrect email or password",
+  const notifyErrorSignup = (
+    errorMessage = "An error occured during registration",
   ) =>
     toast.error(errorMessage, {
       position: "top-right",
@@ -29,5 +29,5 @@ export function useLoginToast() {
       transition: Bounce,
     });
 
-  return { notifySuccessLogin, notifyErrorLogin };
+  return { notifySuccessSignup, notifyErrorSignup };
 }
