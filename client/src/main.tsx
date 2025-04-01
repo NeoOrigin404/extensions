@@ -8,8 +8,13 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import ErrorPage from "./pages/Errorpage/ErrorPage";
+import ExtensionsHome from "./pages/Extensions/ExtensionsHome";
 import Home from "./pages/Home";
-import Login from "./pages/Login/login";
+import LoginPage from "./pages/Login/LoginPage";
+import Signup from "./pages/Signup/Signup";
+
+import { getExtensions } from "./services/request";
+import { AuthProvider } from "./services/Context/AuthContext";
 
 /* ************************************************************************* */
 
@@ -24,7 +29,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/extensions",
+        element: <ExtensionsHome />,
+        loader: getExtensions,
       },
     ],
   },
@@ -39,6 +53,8 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );
