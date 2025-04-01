@@ -38,6 +38,7 @@ const login: RequestHandler = async (req, res, next) => {
     } else {
       const payload = {
         id: member.id,
+        username: member.username,
         email: member.email,
         role: member.role,
         premium: member.premium,
@@ -55,6 +56,7 @@ const login: RequestHandler = async (req, res, next) => {
 
       res.cookie("auth", token).json({
         message: "Connexion réussie",
+        username: payload.username,
         role: payload.role,
         email: payload.email,
         premium: payload.premium,
