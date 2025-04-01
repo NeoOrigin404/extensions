@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { loginMember } from "../../services/request";
 import { useState } from "react";
-import { useLoginToast } from "../../hooks/Toastify/UseLoginToast";
 import { ToastContainer } from "react-toastify";
+import { useAuth } from "../../services/Context/AuthContext";
 
 export default function FormLogin() {
   const navigate = useNavigate();
-  const { notifySuccessLogin, notifyErrorLogin } = useLoginToast();
+  const { setRole, setPremium } = useAuth();
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -19,18 +19,12 @@ export default function FormLogin() {
       [e.currentTarget.name]: e.currentTarget.value,
     });
   };
-  const sendCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
+  const sendCredentials = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const response = await loginMember(credentials);
-
-      if (response) {
-        notifySuccessLogin(response.username);
-        setTimeout(() => navigate("/extensions"), 3000);
-      }
-    } catch (error) {
-      notifyErrorLogin();
-    }
+    loginMember(credentials, setRole, setPremium);
+    setTimeout(() => {
+      navigate("/extensions");
+    });
   };
 
   return (

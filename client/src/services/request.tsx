@@ -1,16 +1,28 @@
 import axios from "axios";
+import { useLoginToast } from "../hooks/Toastify/UseLoginToast";
 
 const URL = import.meta.env.VITE_API_URL;
 
-const loginMember = async (loginData: LoginData) => {
-  try {
-    const response = await axios.post(`${URL}/api/login`, loginData, {
+const { notifySuccessLogin, notifyErrorLogin } = useLoginToast();
+
+const loginMember = (
+  loginData: LoginData,
+  setRole: (role: string) => void,
+  setPremium: (premium: boolean) => void,
+) => {
+  return axios
+    .post(`${URL}/api/login`, loginData, {
       withCredentials: true,
+    })
+    .then(({ data }) => {
+      setRole(data.role);
+      setPremium(data.premium);
+      notifySuccessLogin(data.username);
+    })
+    .catch((error) => {
+      notifyErrorLogin();
+      console.error(error);
     });
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
 };
 
 const signupMember = async (signupData: SignupData): Promise<boolean> => {
@@ -25,7 +37,7 @@ const signupMember = async (signupData: SignupData): Promise<boolean> => {
 
 const getExtensions = () => {
   return axios
-    .get(`${URL}/api/extensions`)
+    .get(`${URL}/api/extensions`, { withCredentials: true })
     .then((response) => console.info(response))
     .catch((error) => console.error(error));
 };

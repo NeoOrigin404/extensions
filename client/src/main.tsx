@@ -14,6 +14,7 @@ import LoginPage from "./pages/Login/LoginPage";
 import Signup from "./pages/Signup/Signup";
 
 import { getExtensions } from "./services/request";
+import { AuthProvider } from "./services/Context/AuthContext";
 
 /* ************************************************************************* */
 
@@ -52,6 +53,8 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );
