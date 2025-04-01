@@ -22,9 +22,9 @@ export default function FormLogin() {
   const sendCredentials = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     loginMember(credentials, setRole, setPremium);
-    /* setTimeout(() => {
+    setTimeout(() => {
       navigate("/extensions");
-    }); */
+    });
   };
 
   return (

@@ -37,7 +37,7 @@ const signupMember = async (signupData: SignupData): Promise<boolean> => {
 
 const getExtensions = () => {
   return axios
-    .get(`${URL}/api/extensions`)
+    .get(`${URL}/api/extensions`, { withCredentials: true })
     .then((response) => console.info(response))
     .catch((error) => console.error(error));
 };
