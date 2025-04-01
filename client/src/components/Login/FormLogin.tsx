@@ -24,7 +24,7 @@ export default function FormLogin() {
     loginMember(credentials, setRole, setPremium);
     setTimeout(() => {
       navigate("/extensions");
-    });
+    }, 3000);
   };
 
   return (
