@@ -11,6 +11,7 @@ import ErrorPage from "./pages/Errorpage/ErrorPage";
 import ExtensionsHome from "./pages/Extensions/ExtensionsHome";
 import Home from "./pages/Home";
 import LoginPage from "./pages/Login/LoginPage";
+import Signup from "./pages/Signup/Signup";
 
 /* ************************************************************************* */
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
       },
       {
         path: "/extensions",
