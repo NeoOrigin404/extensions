@@ -13,6 +13,8 @@ import Home from "./pages/Home";
 import LoginPage from "./pages/Login/LoginPage";
 import Signup from "./pages/Signup/Signup";
 
+import { getExtensions } from "./services/request";
+
 /* ************************************************************************* */
 
 const router = createBrowserRouter([
@@ -35,6 +37,7 @@ const router = createBrowserRouter([
       {
         path: "/extensions",
         element: <ExtensionsHome />,
+        loader: getExtensions,
       },
     ],
   },

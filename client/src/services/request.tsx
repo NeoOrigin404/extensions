@@ -23,4 +23,11 @@ const signupMember = async (signupData: SignupData): Promise<boolean> => {
   }
 };
 
-export { loginMember, signupMember };
+const getExtensions = () => {
+  return axios
+    .get(`${URL}/api/extensions`)
+    .then((response) => console.info(response))
+    .catch((error) => console.error(error));
+};
+
+export { loginMember, signupMember, getExtensions };
