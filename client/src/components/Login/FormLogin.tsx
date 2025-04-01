@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 
 export default function FormLogin() {
   const navigate = useNavigate();
-  const { notifySuccess, notifyError } = useLoginToast();
+  const { notifySuccessLogin, notifyErrorLogin } = useLoginToast();
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -25,21 +25,21 @@ export default function FormLogin() {
       const response = await loginMember(credentials);
 
       if (response) {
-        notifySuccess(response.username);
+        notifySuccessLogin(response.username);
         setTimeout(() => navigate("/extensions"), 3000);
       }
     } catch (error) {
-      notifyError();
+      notifyErrorLogin();
     }
   };
 
   return (
     <section className="login">
       <form onSubmit={sendCredentials}>
-        <h2>Se connecter</h2>
+        <h2>Login</h2>
         <p>
-          Vous pouvez vous connecter si vous possédez un compte, sinon vous
-          pouvez en créez un <Link to="/signup">ici</Link>.
+          You can log in if you have an account, otherwise you can create one{" "}
+          <Link to="/signup">here</Link>.
         </p>
         <div className="container-form">
           <div className="login-form">
@@ -54,7 +54,7 @@ export default function FormLogin() {
             />
           </div>
           <div className="login-form">
-            <label htmlFor="password">Mot de passe</label>
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               name="password"

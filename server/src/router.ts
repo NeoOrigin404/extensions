@@ -1,5 +1,6 @@
 import express from "express";
 import auth from "./middlewares/auth";
+import formSignup from "./middlewares/formSignup";
 
 const router = express.Router();
 
@@ -18,7 +19,12 @@ router.get("/api/member", auth.verify, auth.verifyAdmin, memberAction.read);
 router.put("/api/member", auth.verify, memberAction.edit);
 
 // Add a new member
-router.post("/api/members", auth.hashPassword, memberAction.add);
+router.post(
+  "/api/members",
+  formSignup.validate,
+  auth.hashPassword,
+  memberAction.add,
+);
 
 // Delete a member
 router.delete(
