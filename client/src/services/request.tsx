@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { useNavigate } from "react-router-dom";
 import { useLoginToast } from "../hooks/Toastify/UseLoginToast";
 
 const URL = import.meta.env.VITE_API_URL;
@@ -9,6 +10,7 @@ const loginMember = (
   loginData: LoginData,
   setRole: (role: string) => void,
   setPremium: (premium: boolean) => void,
+  navigate: ReturnType<typeof useNavigate>,
 ) => {
   return axios
     .post(`${URL}/api/login`, loginData, {
@@ -18,6 +20,9 @@ const loginMember = (
       setRole(data.role);
       setPremium(data.premium);
       notifySuccessLogin(data.username);
+      setTimeout(() => {
+        navigate("/extensions");
+      }, 3000);
     })
     .catch((error) => {
       notifyErrorLogin();
