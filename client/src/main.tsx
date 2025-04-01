@@ -8,8 +8,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import ErrorPage from "./pages/Errorpage/ErrorPage";
+import ExtensionsHome from "./pages/Extensions/ExtensionsHome";
 import Home from "./pages/Home";
-import Login from "./pages/Login/login";
+import LoginPage from "./pages/Login/LoginPage";
 
 /* ************************************************************************* */
 
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <LoginPage />,
+      },
+      {
+        path: "/extensions",
+        element: <ExtensionsHome />,
       },
     ],
   },
