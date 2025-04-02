@@ -60,4 +60,19 @@ const getExtensions = () => {
     .catch((error) => console.error(error));
 };
 
-export { loginMember, logoutMember, signupMember, getExtensions };
+const deleteExtension = (id: number) => {
+  return axios
+    .delete(`${URL}/api/extension?id=${id}`, {
+      withCredentials: true,
+    })
+    .then()
+    .catch((error) => console.error(error));
+};
+
+export {
+  loginMember,
+  logoutMember,
+  signupMember,
+  getExtensions,
+  deleteExtension,
+};
