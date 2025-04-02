@@ -103,7 +103,7 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
             }}
           >
             <p>
-              Êtes-vous sûr de vouloir supprimer{" "}
+              Are you sure you want to delete{" "}
               <strong>{extensionToDelete?.name}</strong> ?
             </p>
             <div className="confirmation-buttons">
@@ -112,14 +112,14 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
                 className="confirm-button"
                 onClick={() => extensionToDelete !== null && removeExtension()}
               >
-                Confirmer
+                Confirm
               </button>
               <button
                 type="button"
                 className="cancel-button"
                 onClick={closeDeleteModal}
               >
-                Annuler
+                Cancel
               </button>
             </div>
           </div>
@@ -185,7 +185,7 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
                 className="close-modal"
                 onClick={closeModal}
               >
-                Fermer
+                Close
               </button>
             </form>
           )}
