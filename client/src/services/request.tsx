@@ -69,10 +69,20 @@ const deleteExtension = (id: number) => {
     .catch((error) => console.error(error));
 };
 
+const updateExtension = (id: number, updatedExtension: ExtensionType) => {
+  return axios
+    .put(`${URL}/api/extension?id=${id}`, updatedExtension, {
+      withCredentials: true,
+    })
+    .then()
+    .catch((error) => console.error(error));
+};
+
 export {
   loginMember,
   logoutMember,
   signupMember,
   getExtensions,
   deleteExtension,
+  updateExtension,
 };
