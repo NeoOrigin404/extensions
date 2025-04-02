@@ -1,5 +1,5 @@
 import ToggleButton from "./ToggleButton";
-import { deleteExtension } from "../../services/request";
+import { deleteExtension, updateExtension } from "../../services/request";
 import { useRevalidator } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
@@ -35,6 +35,41 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const [editExtension, setEditExtension] = useState({
+    id: Number(),
+    name: "",
+    logo: "",
+    description: "",
+    is_active: false,
+    is_premium: false,
+  });
+
+  const handleChangeExtensionForm = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setEditExtension({ ...editExtension, [e.target.name]: e.target.value });
+  };
+
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+
+  const openModal = (extension: ExtensionType) => {
+    setEditExtension(extension);
+    dialogRef.current?.showModal();
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeModal = () => {
+    dialogRef.current?.close();
+    document.body.style.overflow = "";
+  };
+
+  const handleEditExtension = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    updateExtension(editExtension.id, editExtension);
+    revalidate();
+    closeModal();
   };
 
   return (
@@ -91,6 +126,71 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
         </dialog>
       )}
       <ToggleButton />
+      <button type="button" onClick={() => openModal(extension)}>
+        Edit
+      </button>
+      <dialog
+        ref={dialogRef}
+        className="modal"
+        onClick={closeModal}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") {
+            closeModal();
+          }
+        }}
+      >
+        <div
+          className="modal-content"
+          onClick={(e) => e.stopPropagation()}
+          tabIndex={-1}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          }}
+        >
+          {editExtension && (
+            <form onSubmit={handleEditExtension} className="form-dashboard">
+              <p>Name</p>
+              <input
+                type="text"
+                value={editExtension.name}
+                name="name"
+                placeholder="Name"
+                onChange={handleChangeExtensionForm}
+              />
+              <p>Logo</p>
+              <input
+                type="text"
+                value={editExtension.logo}
+                name="logo"
+                id="logo"
+                placeholder="URL"
+                onChange={handleChangeExtensionForm}
+              />
+              <p>Description</p>
+              <input
+                type="text"
+                value={editExtension.description}
+                name="description"
+                placeholder="Description"
+                onChange={handleChangeExtensionForm}
+              />
+              <button type="submit" className="modify-form">
+                Edit
+              </button>
+              <button
+                type="submit"
+                className="close-modal"
+                onClick={closeModal}
+              >
+                Fermer
+              </button>
+            </form>
+          )}
+        </div>
+      </dialog>
     </section>
   );
 }
