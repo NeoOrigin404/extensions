@@ -30,6 +30,19 @@ const loginMember = (
     });
 };
 
+const logoutMember = (
+  setRole: (role: string) => void,
+  navigate: ReturnType<typeof useNavigate>,
+) => {
+  return axios
+    .get(`${URL}/api/logout`, { withCredentials: true })
+    .then(() => {
+      setRole("anonymous");
+      navigate("/");
+    })
+    .catch((error) => console.error(error));
+};
+
 const signupMember = async (signupData: SignupData): Promise<boolean> => {
   try {
     const response = await axios.post(`${URL}/api/members`, signupData);
@@ -47,4 +60,4 @@ const getExtensions = () => {
     .catch((error) => console.error(error));
 };
 
-export { loginMember, signupMember, getExtensions };
+export { loginMember, logoutMember, signupMember, getExtensions };
