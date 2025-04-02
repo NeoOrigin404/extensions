@@ -1,0 +1,29 @@
+.toggle-container {
+  width: 50px;
+  height: 25px;
+  background-color: #ccc;
+  border-radius: 25px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.toggle-switch {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+  transition: left 0.3s ease-in-out;
+}
+
+.toggle-container.active {
+  background-color: #4caf50;
+}
+
+.toggle-container.active .toggle-switch {
+  left: 27px;
+}
