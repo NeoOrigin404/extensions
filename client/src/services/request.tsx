@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { useNavigate } from "react-router-dom";
 import { useLoginToast } from "../hooks/Toastify/UseLoginToast";
 
 const URL = import.meta.env.VITE_API_URL;
@@ -9,6 +10,7 @@ const loginMember = (
   loginData: LoginData,
   setRole: (role: string) => void,
   setPremium: (premium: boolean) => void,
+  navigate: ReturnType<typeof useNavigate>,
 ) => {
   return axios
     .post(`${URL}/api/login`, loginData, {
@@ -18,11 +20,27 @@ const loginMember = (
       setRole(data.role);
       setPremium(data.premium);
       notifySuccessLogin(data.username);
+      setTimeout(() => {
+        navigate("/extensions");
+      }, 3000);
     })
     .catch((error) => {
       notifyErrorLogin();
       console.error(error);
     });
+};
+
+const logoutMember = (
+  setRole: (role: string) => void,
+  navigate: ReturnType<typeof useNavigate>,
+) => {
+  return axios
+    .get(`${URL}/api/logout`, { withCredentials: true })
+    .then(() => {
+      setRole("anonymous");
+      navigate("/");
+    })
+    .catch((error) => console.error(error));
 };
 
 const signupMember = async (signupData: SignupData): Promise<boolean> => {
@@ -38,8 +56,23 @@ const signupMember = async (signupData: SignupData): Promise<boolean> => {
 const getExtensions = () => {
   return axios
     .get(`${URL}/api/extensions`, { withCredentials: true })
-    .then((response) => console.info(response))
+    .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 
-export { loginMember, signupMember, getExtensions };
+const deleteExtension = (id: number) => {
+  return axios
+    .delete(`${URL}/api/extension?id=${id}`, {
+      withCredentials: true,
+    })
+    .then()
+    .catch((error) => console.error(error));
+};
+
+export {
+  loginMember,
+  logoutMember,
+  signupMember,
+  getExtensions,
+  deleteExtension,
+};

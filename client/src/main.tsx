@@ -38,7 +38,9 @@ const router = createBrowserRouter([
       {
         path: "/extensions",
         element: <ExtensionsHome />,
-        loader: getExtensions,
+        loader: async () => ({
+          extensions: await getExtensions(),
+        }),
       },
     ],
   },

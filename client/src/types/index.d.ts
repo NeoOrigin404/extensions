@@ -12,3 +12,20 @@ interface SignupData {
   password: string;
   confirmPassword: string;
 }
+
+interface ExtensionType {
+  id: number;
+  logo: string;
+  name: string;
+  description: string;
+  is_premium: boolean;
+  is_active: boolean;
+}
+
+interface ExtensionsProps {
+  extension: ExtensionType;
+}
+
+interface ToggleButtonProps {
+  onToggle?: (isActive: boolean) => void;
+}
