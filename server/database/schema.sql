@@ -61,7 +61,7 @@ VALUES
 ("Rust"),
 ("TypeScript"),
 ("CSS"),
-("HTML5")
+("HTML5"),
 ("SQL");
 
 
