@@ -75,20 +75,24 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
 
   return (
     <article>
-      <div className="image-container">
-        <div className="test">
+      <div className="header">
+        <div className="image-container">
           <img src={`${URL}${extension.logo}`} alt={extension.name} />
-          <h2>{extension.name}</h2>
-          <p>{extension.description}</p>
+          <div className="text-container">
+            <h2>{extension.name}</h2>
+            <p>{extension.description}</p>
+          </div>
         </div>
       </div>
-      <button type="button" onClick={() => openDeleteModal(extension)}>
-        Delete
-      </button>
-      <ToggleButton />
-      <button type="button" onClick={() => openModal(extension)}>
-        Edit
-      </button>
+      <div className="footer">
+        <button type="button" onClick={() => openDeleteModal(extension)}>
+          Delete
+        </button>
+        <button type="button" onClick={() => openModal(extension)}>
+          Edit
+        </button>
+        <ToggleButton />
+      </div>
       {showDeleteConfirmation && (
         <dialog
           ref={deleteDialogRef}
