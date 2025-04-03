@@ -8,9 +8,17 @@
   --font-family: "Noto Sans", Verdana, sans-serif;
   --card-radius: 5px;
   --button-radius: 10px;
+  --title-color-dark: white;
+  --text-color-dark: #c5c9d2;
+  --toggle-active-dark: #f05e51;
 }
 
 body {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 9, 28, 1) 0%,
+    rgba(10, 21, 66, 1) 50%
+  );
   a {
     text-decoration: none;
   }
