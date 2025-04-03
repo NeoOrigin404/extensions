@@ -35,12 +35,35 @@ VALUES
 INSERT INTO extension (logo, name, description, is_premium, is_active)
 VALUES
 ("/assets/images/logo-devlens.svg", "DevLens", "Quickly inspect page layouts and visualize element boundaries.", FALSE, FALSE),
-("/assets/images/logo-style-spy.svg", "StyleSpy", "Instantly analyze and copy CSS from any webpage element.", FALSE, FALSE);
+("/assets/images/logo-style-spy.svg", "StyleSpy", "Instantly analyze and copy CSS from any webpage element.", FALSE, FALSE),
+("./assets/images/logo-speed-boost.svg", "SpeedBoost", "Optimizes browser resource usage to accelerate page loading.", FALSE, FALSE),
+("./assets/images/logo-json-wizard.svg", "JSONWizard", "Formats, validates, and prettifies JSON responses in-browser.", FALSE, FALSE),
+("./assets/images/logo-tab-master-pro.svg", "TabMaster Pro", "Organizes browser tabs into groups and sessions.", FALSE, FALSE),
+("./assets/images/logo-viewport-buddy.svg", "ViewportBuddy", "Simulates various screen resolutions directly within the browser.", FALSE, FALSE),
+("./assets/images/logo-markup-notes.svg", "Markup Notes", "Enables annotation and notes directly onto webpages for collaborative debugging.", FALSE, FALSE),
+("./assets/images/logo-grid-guides.svg", "GridGuides", "Overlay customizable grids and alignment guides on any webpage.", FALSE, FALSE),
+("./assets/images/logo-palette-picker.svg", "Palette Picker", "Instantly extracts color palettes from any webpage.", FALSE, FALSE),
+("./assets/images/logo-link-checker.svg", "LinkChecker", "Scans and highlights broken links on any page.", FALSE, FALSE),
+("./assets/images/logo-dom-snapshot.svg", "DOM Snapshot", "Capture and export DOM structures quickly.", FALSE, FALSE),
+("./assets/images/logo-console-plus.svg", "ConsolePlus", "Enhanced developer console with advanced filtering and logging.", FALSE, FALSE);
+
 
 INSERT INTO language (name)
 VALUES
 ("JavaScript"),
-("Python");
+("Python"),
+("C#"),
+("C++")
+("Java"),
+("PHP"),
+("Ruby"),
+("Swift"),
+("Rust"),
+("TypeScript"),
+("CSS"),
+("HTML5")
+("SQL");
+
 
 INSERT INTO member_language (member_id, language_id)
 VALUES
