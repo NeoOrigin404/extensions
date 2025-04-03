@@ -21,7 +21,7 @@
 }
 
 .toggle-container.active {
-  background-color: #4caf50;
+  background-color: var(--toggle-active-dark);
 }
 
 .toggle-container.active .toggle-switch {

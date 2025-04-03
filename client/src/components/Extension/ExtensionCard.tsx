@@ -2,6 +2,7 @@ import ToggleButton from "./ToggleButton";
 import { deleteExtension, updateExtension } from "../../services/request";
 import { useRevalidator } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import "../../styles/ExtensionHome/extensionCard.scss";
 
 export default function ExtensionCard({ extension }: ExtensionsProps) {
   const URL = import.meta.env.VITE_API_URL;
@@ -73,7 +74,7 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
   };
 
   return (
-    <section>
+    <article>
       <img src={`${URL}${extension.logo}`} alt={extension.name} />
       <h2>{extension.name}</h2>
       <p>{extension.description}</p>
@@ -191,6 +192,6 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
           )}
         </div>
       </dialog>
-    </section>
+    </article>
   );
 }

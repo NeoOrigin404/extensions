@@ -1,0 +1,11 @@
+article {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nav-bg-color-dark);
+    border: 0.5px solid gray;
+    border-radius: var(--card-radius);
+    margin-bottom: 1rem;
+    img {
+        width: 4rem;
+    }
+}
