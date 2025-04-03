@@ -1,0 +1,47 @@
+.login-form {
+    margin-top: 1rem;
+    background-color: var(--nav-bg-color-dark);
+    border-radius: var(--navbar-radius);
+    form {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    a {
+        color: var(--button-color-dark);
+        font-weight: 700;
+    }
+    a:hover {
+        color: var(--button-hover-dark);
+    }
+    .container-form {
+        display: flex;
+        flex-direction: column;
+        input {
+            margin-bottom: 1rem;
+            border-radius: var(--input-radius);
+            padding: 1rem;
+            border: none;
+        }
+        input[name="password"] {
+            margin-bottom: 2rem;
+        }
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: var(--button-color-dark);
+            color: var(--title-color-dark);
+        }
+        input[type="submit"]:hover {
+            background-color: var(--button-hover-dark);
+        }
+    }
+}
+
+@media only screen and (min-width: 792px) {
+    .login-form {
+        form {
+            padding: 3rem;
+        }
+    }
+}
