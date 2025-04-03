@@ -75,11 +75,19 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
 
   return (
     <article>
-      <img src={`${URL}${extension.logo}`} alt={extension.name} />
-      <h2>{extension.name}</h2>
-      <p>{extension.description}</p>
+      <div className="image-container">
+        <div className="test">
+          <img src={`${URL}${extension.logo}`} alt={extension.name} />
+          <h2>{extension.name}</h2>
+          <p>{extension.description}</p>
+        </div>
+      </div>
       <button type="button" onClick={() => openDeleteModal(extension)}>
         Delete
+      </button>
+      <ToggleButton />
+      <button type="button" onClick={() => openModal(extension)}>
+        Edit
       </button>
       {showDeleteConfirmation && (
         <dialog
@@ -126,10 +134,6 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
           </div>
         </dialog>
       )}
-      <ToggleButton />
-      <button type="button" onClick={() => openModal(extension)}>
-        Edit
-      </button>
       <dialog
         ref={dialogRef}
         className="modal"

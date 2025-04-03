@@ -5,7 +5,11 @@ article {
     border: 0.5px solid gray;
     border-radius: var(--card-radius);
     margin-bottom: 1rem;
-    img {
-        width: 4rem;
+    .image-container {
+        display: flex;
+    }
+    .test {
+        display: flex;
+        flex-direction: column;
     }
 }
