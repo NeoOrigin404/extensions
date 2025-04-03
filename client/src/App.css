@@ -2,23 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font-family);
 }
 
 :root {
   --font-family: "Noto Sans", Verdana, sans-serif;
   --card-radius: 5px;
-  --button-radius: 10px;
+  --button-radius: 30px;
   --title-color-dark: white;
   --text-color-dark: #c5c9d2;
+  --text-color-button-dark: #3e081f;
+  --button-color-dark: #f25c53;
   --toggle-active-dark: #f05e51;
 }
 
 body {
-  background: linear-gradient(
-    180deg,
-    rgba(4, 9, 28, 1) 0%,
-    rgba(10, 21, 66, 1) 50%
-  );
   a {
     text-decoration: none;
   }
@@ -26,4 +24,12 @@ body {
   ol {
     list-style: none;
   }
+}
+
+main {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 9, 28, 1) 0%,
+    rgba(10, 21, 66, 1) 50%
+  );
 }
