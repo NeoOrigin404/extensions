@@ -18,5 +18,9 @@
     background-color: var(--button-color-dark);
     font-size: 1rem;
     font-weight: 700;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: var(--button-hover-dark);
   }
 }
