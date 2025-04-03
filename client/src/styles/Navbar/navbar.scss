@@ -6,6 +6,8 @@ nav {
     padding: 1rem;
     background-color: var(--nav-bg-color-dark);
     border-radius: var(--navbar-radius);
+    margin: 0 auto;
+    max-width: 1440px;
     button {
         padding: 1rem;
         border-radius: var(--button-radius);
