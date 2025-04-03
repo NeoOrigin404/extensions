@@ -53,7 +53,7 @@ VALUES
 ("JavaScript"),
 ("Python"),
 ("C#"),
-("C++")
+("C++"),
 ("Java"),
 ("PHP"),
 ("Ruby"),
