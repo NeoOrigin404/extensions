@@ -52,7 +52,7 @@ export default function FormLogin() {
             onChange={handleChangeCredentials}
             value={credentials.password}
           />
-          <input type="submit" value="Continue" className="submit-input" />
+          <input type="submit" value="Continue" />
         </div>
         <ToastContainer />
       </form>
