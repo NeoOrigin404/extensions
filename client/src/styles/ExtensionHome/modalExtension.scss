@@ -50,3 +50,9 @@
 ::backdrop {
     background: rgba(0, 0, 0, 0.7);
   }
+
+@media only screen and (min-width: 792px) {
+    .confirmation-modal {
+        max-width: 500px;
+    }
+}
