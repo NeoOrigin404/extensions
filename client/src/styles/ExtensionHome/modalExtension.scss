@@ -35,6 +35,47 @@
     }
 }
 
+.edit-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    border-radius: var(--card-radius);
+    border: 1px solid var(--button-color-dark);
+    padding: 1rem;
+    background-color: white;
+    animation: openModal 0.3s linear;
+    input {
+        margin-bottom: 1rem;
+        border-radius: var(--input-radius);
+        border: 1px solid var(--text-color-dark);
+        padding: 1rem;
+    }
+    input[name="description"] {
+        margin-bottom: 1rem;
+    }
+    .confirmation-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    button {
+        padding: 0.5rem 2rem;
+        border-radius: var(--button-radius);
+        &:first-of-type {
+            background-color: var(--button-color-dark);
+            color: var(--title-color-dark);
+            &:hover {
+                background-color: var(--button-hover-dark);
+            }
+        }
+        &:nth-last-of-type(1):hover {
+            background-color: var(--text-color-dark);
+        }
+    }
+}
+
 @keyframes openModal {
     0% {
       opacity: 0;
@@ -50,6 +91,7 @@
 ::backdrop {
     background: rgba(0, 0, 0, 0.7);
   }
+
 
 @media only screen and (min-width: 792px) {
     .confirmation-modal {

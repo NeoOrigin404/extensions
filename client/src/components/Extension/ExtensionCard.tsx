@@ -144,7 +144,6 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
         }}
       >
         <div
-          className="modal-content"
           onClick={(e) => e.stopPropagation()}
           tabIndex={-1}
           onKeyDown={(e) => {
@@ -155,7 +154,7 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
           }}
         >
           {editExtension && (
-            <form onSubmit={handleEditExtension} className="form-dashboard">
+            <form onSubmit={handleEditExtension} className="edit-modal">
               <p>Name</p>
               <input
                 type="text"
@@ -181,16 +180,18 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
                 placeholder="Description"
                 onChange={handleChangeExtensionForm}
               />
-              <button type="submit" className="modify-form">
-                Edit
-              </button>
-              <button
-                type="submit"
-                className="close-modal"
-                onClick={closeModal}
-              >
-                Close
-              </button>
+              <div className="confirmation-buttons">
+                <button type="submit" className="modify-form">
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  className="close-modal"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
+              </div>
             </form>
           )}
         </div>

@@ -34,16 +34,18 @@ article {
         button {
             padding: 1rem 1.5rem;
             border-radius: var(--button-radius);
-            background-color: var(--button-color-dark);
-            color: var(--title-color-dark);
-            &:hover {
-                background-color: var(--button-hover-dark);
-            }
-        &:first-of-type {
             background-color: transparent;
             border: 1px solid gray;
+            color: var(--text-color-dark);
             &:hover {
                 background-color: rgba(211, 211, 211, 0.50);
+            }
+        &:first-of-type {
+            background-color: var(--button-color-dark);
+            color: var(--title-color-dark);
+            border: none;
+            &:hover {
+                background-color: var(--button-hover-dark);
             }
         }
         }
