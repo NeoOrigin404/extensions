@@ -1,0 +1,52 @@
+.confirmation-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    border-radius: var(--card-radius);
+    border: 1px solid var(--button-color-dark);
+    padding: 1rem;
+    animation: openModal 0.3s linear;
+    p {
+        margin-bottom: 1rem;
+    }
+    strong {
+        color: var(--button-color-dark);
+    }
+    .confirmation-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        button {
+            padding: 0.5rem 2rem;
+            border-radius: var(--button-radius);
+            &:first-of-type {
+                background-color: var(--button-color-dark);
+                color: var(--title-color-dark);
+                &:hover {
+                    background-color: var(--button-hover-dark);
+                }
+            }
+            &:nth-last-of-type(1):hover {
+                background-color: var(--text-color-dark);
+            }
+        }
+    }
+}
+
+@keyframes openModal {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+  }

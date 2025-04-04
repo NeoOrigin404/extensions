@@ -3,6 +3,7 @@ import { deleteExtension, updateExtension } from "../../services/request";
 import { useRevalidator } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import "../../styles/ExtensionHome/extensionCard.scss";
+import "../../styles/ExtensionHome/modalExtension.scss";
 
 export default function ExtensionCard({ extension }: ExtensionsProps) {
   const URL = import.meta.env.VITE_API_URL;
@@ -105,7 +106,6 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
           }}
         >
           <div
-            className="modal-content"
             onClick={(e) => e.stopPropagation()}
             tabIndex={-1}
             onKeyDown={(e) => {
@@ -122,16 +122,11 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
             <div className="confirmation-buttons">
               <button
                 type="button"
-                className="confirm-button"
                 onClick={() => extensionToDelete !== null && removeExtension()}
               >
                 Confirm
               </button>
-              <button
-                type="button"
-                className="cancel-button"
-                onClick={closeDeleteModal}
-              >
+              <button type="button" onClick={closeDeleteModal}>
                 Cancel
               </button>
             </div>
