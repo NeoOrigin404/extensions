@@ -37,6 +37,13 @@
         input[type="submit"]:hover {
             background-color: var(--button-hover-dark);
         }
+        a {
+            color: var(--button-color-dark);
+            font-weight: 700;
+        }
+        a:hover {
+            color: var(--button-hover-dark);
+        }
     }
 }
 

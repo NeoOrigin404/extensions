@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signupMember } from "../../services/request";
 import { ToastContainer } from "react-toastify";
 import { useSignupToast } from "../../hooks/Toastify/UseSignupToast";
@@ -103,6 +103,9 @@ export default function SignupForm() {
           placeholder="Confirm your password"
         />
         <input type="submit" value="Create account" />
+        <p>
+          Already have an account ? <Link to="/login">Login</Link>
+        </p>
         <ToastContainer />
       </form>
     </section>
