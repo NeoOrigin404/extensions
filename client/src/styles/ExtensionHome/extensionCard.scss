@@ -49,3 +49,9 @@ article {
         }
     }
 }
+
+@media only screen and (min-width: 792px) {
+    article {
+        margin-bottom: 0;
+    }
+}

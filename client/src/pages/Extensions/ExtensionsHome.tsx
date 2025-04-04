@@ -10,9 +10,11 @@ export default function ExtensionsHome() {
   return (
     <section className="section-extension">
       <h1>Extensions list</h1>
-      {extensions.map((extension) => (
-        <ExtensionCard key={extension.id} extension={extension} />
-      ))}
+      <div className="wrap">
+        {extensions.map((extension) => (
+          <ExtensionCard key={extension.id} extension={extension} />
+        ))}
+      </div>
     </section>
   );
 }
