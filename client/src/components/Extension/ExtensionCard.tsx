@@ -5,9 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import "../../styles/ExtensionHome/extensionCard.scss";
 import "../../styles/ExtensionHome/modalExtension.scss";
 
-export default function ExtensionCard({ extension }: ExtensionsProps) {
+export default function ExtensionCard({
+  extension: initialExtension,
+}: ExtensionsProps) {
   const URL = import.meta.env.VITE_API_URL;
   const { revalidate } = useRevalidator();
+  const [extension, setExtension] = useState(initialExtension);
   const [extensionToDelete, setExtensionToDelete] =
     useState<ExtensionType | null>(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
@@ -18,6 +21,10 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
       deleteDialogRef.current?.showModal();
     }
   }, [showDeleteConfirmation, extensionToDelete]);
+
+  useEffect(() => {
+    setExtension(initialExtension);
+  }, [initialExtension]);
 
   const openDeleteModal = (extension: ExtensionType) => {
     setExtensionToDelete(extension);
@@ -67,9 +74,10 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
     document.body.style.overflow = "";
   };
 
-  const handleEditExtension = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleEditExtension = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    updateExtension(editExtension.id, editExtension);
+    await updateExtension(editExtension.id, editExtension);
+    setExtension({ ...extension, ...editExtension });
     revalidate();
     closeModal();
   };
