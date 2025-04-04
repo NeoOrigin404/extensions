@@ -3,6 +3,7 @@ import { loginMember } from "../../services/request";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { useAuth } from "../../services/Context/AuthContext";
+import "../../styles/Login/loginForm.scss";
 
 export default function FormLogin() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export default function FormLogin() {
   };
 
   return (
-    <section className="login">
+    <section className="login-form">
       <form onSubmit={sendCredentials}>
         <h2>Login</h2>
         <p>
@@ -33,31 +34,27 @@ export default function FormLogin() {
           <Link to="/signup">here</Link>.
         </p>
         <div className="container-form">
-          <div className="login-form">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Votre email"
-              onChange={handleChangeCredentials}
-              value={credentials.email}
-            />
-          </div>
-          <div className="login-form">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Votre mot de passe"
-              onChange={handleChangeCredentials}
-              value={credentials.password}
-            />
-          </div>
-          <input type="submit" value="Continuer" className="login-input" />
-          <ToastContainer />
+          <label htmlFor="email">Email*</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Your email"
+            onChange={handleChangeCredentials}
+            value={credentials.email}
+          />
+          <label htmlFor="password">Password*</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Your password"
+            onChange={handleChangeCredentials}
+            value={credentials.password}
+          />
+          <input type="submit" value="Continue" />
         </div>
+        <ToastContainer />
       </form>
     </section>
   );

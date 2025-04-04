@@ -2,28 +2,46 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: var(--font-family);
 }
 
 :root {
   --font-family: "Noto Sans", Verdana, sans-serif;
-  --card-radius: 5px;
-  --button-radius: 10px;
+  --card-radius: 15px;
+  --button-radius: 30px;
+  --navbar-radius: 15px;
+  --input-radius: 10px;
   --title-color-dark: white;
   --text-color-dark: #c5c9d2;
-  --toggle-active-dark: #f05e51;
+  --text-color-button-dark: #091540;
+  --button-color-dark: #c7231a;
+  --button-hover-dark: #f23228;
+  --toggle-active-dark: #c7231a;
+  --nav-bg-color-dark: #1f2535;
 }
 
 body {
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+  ul,
+  ol {
+    list-style: none;
+    cursor: pointer;
+  }
+  button {
+    cursor: pointer;
+    border: none;
+  }
+}
+
+main {
   background: linear-gradient(
     180deg,
     rgba(4, 9, 28, 1) 0%,
     rgba(10, 21, 66, 1) 50%
   );
-  a {
-    text-decoration: none;
-  }
-  ul,
-  ol {
-    list-style: none;
-  }
+  padding: 1rem;
+  min-height: 100vh;
 }

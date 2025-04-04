@@ -2,6 +2,8 @@ import ToggleButton from "./ToggleButton";
 import { deleteExtension, updateExtension } from "../../services/request";
 import { useRevalidator } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import "../../styles/ExtensionHome/extensionCard.scss";
+import "../../styles/ExtensionHome/modalExtension.scss";
 
 export default function ExtensionCard({ extension }: ExtensionsProps) {
   const URL = import.meta.env.VITE_API_URL;
@@ -73,13 +75,25 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
   };
 
   return (
-    <section>
-      <img src={`${URL}${extension.logo}`} alt={extension.name} />
-      <h2>{extension.name}</h2>
-      <p>{extension.description}</p>
-      <button type="button" onClick={() => openDeleteModal(extension)}>
-        Delete
-      </button>
+    <article>
+      <div className="header">
+        <div className="image-container">
+          <img src={`${URL}${extension.logo}`} alt={extension.name} />
+          <div className="text-container">
+            <h2>{extension.name}</h2>
+            <p>{extension.description}</p>
+          </div>
+        </div>
+      </div>
+      <div className="footer">
+        <button type="button" onClick={() => openDeleteModal(extension)}>
+          Delete
+        </button>
+        <button type="button" onClick={() => openModal(extension)}>
+          Edit
+        </button>
+        <ToggleButton />
+      </div>
       {showDeleteConfirmation && (
         <dialog
           ref={deleteDialogRef}
@@ -92,7 +106,6 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
           }}
         >
           <div
-            className="modal-content"
             onClick={(e) => e.stopPropagation()}
             tabIndex={-1}
             onKeyDown={(e) => {
@@ -109,26 +122,17 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
             <div className="confirmation-buttons">
               <button
                 type="button"
-                className="confirm-button"
                 onClick={() => extensionToDelete !== null && removeExtension()}
               >
                 Confirm
               </button>
-              <button
-                type="button"
-                className="cancel-button"
-                onClick={closeDeleteModal}
-              >
+              <button type="button" onClick={closeDeleteModal}>
                 Cancel
               </button>
             </div>
           </div>
         </dialog>
       )}
-      <ToggleButton />
-      <button type="button" onClick={() => openModal(extension)}>
-        Edit
-      </button>
       <dialog
         ref={dialogRef}
         className="modal"
@@ -140,7 +144,6 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
         }}
       >
         <div
-          className="modal-content"
           onClick={(e) => e.stopPropagation()}
           tabIndex={-1}
           onKeyDown={(e) => {
@@ -151,7 +154,7 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
           }}
         >
           {editExtension && (
-            <form onSubmit={handleEditExtension} className="form-dashboard">
+            <form onSubmit={handleEditExtension} className="edit-modal">
               <p>Name</p>
               <input
                 type="text"
@@ -177,20 +180,22 @@ export default function ExtensionCard({ extension }: ExtensionsProps) {
                 placeholder="Description"
                 onChange={handleChangeExtensionForm}
               />
-              <button type="submit" className="modify-form">
-                Edit
-              </button>
-              <button
-                type="submit"
-                className="close-modal"
-                onClick={closeModal}
-              >
-                Close
-              </button>
+              <div className="confirmation-buttons">
+                <button type="submit" className="modify-form">
+                  Edit
+                </button>
+                <button
+                  type="button"
+                  className="close-modal"
+                  onClick={closeModal}
+                >
+                  Close
+                </button>
+              </div>
             </form>
           )}
         </div>
       </dialog>
-    </section>
+    </article>
   );
 }

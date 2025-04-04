@@ -1,0 +1,57 @@
+.signup-form {
+    margin-top: 1rem;
+    background-color: var(--nav-bg-color-dark);
+    border-radius: var(--navbar-radius);
+    form {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        h3 {
+            color: var(--title-color-dark);
+            margin-bottom: 1rem;
+        }
+        label {
+            color: var(--title-color-dark);
+        }
+        input {
+            margin-bottom: 1rem;
+            border-radius: var(--input-radius);
+            padding: 1rem;
+            border: none;
+        }
+        p {
+            color: var(--text-color-dark);
+            margin-bottom: 1rem;
+        }
+        input[name="password"] {
+            margin-bottom: 0;
+        }
+        input[name="confirmPassword"] {
+            margin-bottom: 2rem;
+        }
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: var(--button-color-dark);
+            color: var(--title-color-dark);
+        }
+        input[type="submit"]:hover {
+            background-color: var(--button-hover-dark);
+        }
+        a {
+            color: var(--button-color-dark);
+            font-weight: 700;
+        }
+        a:hover {
+            color: var(--button-hover-dark);
+        }
+    }
+}
+
+@media only screen and (min-width: 792px) {
+    .signup-form {
+        max-width: 792px;
+        form {
+            padding: 3rem;
+        }
+    }
+}

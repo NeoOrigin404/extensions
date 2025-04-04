@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signupMember } from "../../services/request";
 import { ToastContainer } from "react-toastify";
 import { useSignupToast } from "../../hooks/Toastify/UseSignupToast";
+import "../../styles/Signup/signupForm.scss";
 
 export default function SignupForm() {
   const navigate = useNavigate();
@@ -38,35 +39,28 @@ export default function SignupForm() {
   };
 
   return (
-    <section>
+    <section className="signup-form">
       <form onSubmit={handleSubmit}>
-        <h1>Create your account</h1>
         <h3>All fields are mandatory</h3>
-        <label htmlFor="first_name">
-          First name<p>*</p>
-        </label>
+        <label htmlFor="first_name">First name*</label>
         <input
           type="text"
           id="first_name"
           name="first_name"
           value={member.first_name}
           onChange={handleChangeForm}
-          placeholder="Votre prénom"
+          placeholder="Your first name"
         />
-        <label htmlFor="last_name">
-          Last name<p>*</p>
-        </label>
+        <label htmlFor="last_name">Last name*</label>
         <input
           type="text"
           id="last_name"
           name="last_name"
           value={member.last_name}
           onChange={handleChangeForm}
-          placeholder="Votre nom"
+          placeholder="Your last name"
         />
-        <label htmlFor="username">
-          Username<p>*</p>
-        </label>
+        <label htmlFor="username">Username*</label>
         <input
           type="text"
           id="username"
@@ -75,20 +69,16 @@ export default function SignupForm() {
           onChange={handleChangeForm}
           placeholder="Your username"
         />
-        <label htmlFor="email">
-          Email<p>*</p>
-        </label>
+        <label htmlFor="email">Email*</label>
         <input
           type="email"
           id="email"
           name="email"
           value={member.email}
           onChange={handleChangeForm}
-          placeholder="Votre adresse email"
+          placeholder="Your email"
         />
-        <label htmlFor="password">
-          Password<p>*</p>
-        </label>
+        <label htmlFor="password">Password*</label>
         <input
           type="password"
           id="password"
@@ -97,22 +87,25 @@ export default function SignupForm() {
           aria-describedby="password-error-password"
           value={member.password}
           onChange={handleChangeForm}
-          placeholder="Votre mot de passe"
+          placeholder="Your password"
         />
-        <label htmlFor="confirmPassword">
-          Confirm your password<p>*</p>
-        </label>
+        <p>
+          8 characters minimum. Numbers, letters and special characters are
+          accepted.
+        </p>
+        <label htmlFor="confirmPassword">Confirm your password*</label>
         <input
           type="password"
           id="confirmPassword"
           name="confirmPassword"
           value={member.confirmPassword}
           onChange={handleChangeForm}
-          placeholder="Confirmez votre mot de passe"
+          placeholder="Confirm your password"
         />
-        <button type="submit" className="submit">
-          Create account
-        </button>
+        <input type="submit" value="Create account" />
+        <p>
+          Already have an account ? <Link to="/login">Login</Link>
+        </p>
         <ToastContainer />
       </form>
     </section>
